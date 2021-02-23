@@ -118,9 +118,7 @@ class Wallet {
             provider: { type: 'JsonRpcProvider', args: { url: NODE_URL + '/' } },
             signer: this.signer
         })
-        this.accounts = JSON.parse(
-            localStorage.getItem(KEY_WALLET_ACCOUNTS) || '{}'
-        )
+        this.getAccountsLocalStorage()
         this.accountId = localStorage.getItem(KEY_ACTIVE_ACCOUNT_ID) || ''
 
         this.staking = new Staking(this)
@@ -402,6 +400,7 @@ class Wallet {
     }
 
     async saveAccount(accountId, keyPair) {
+        this.getAccountsLocalStorage()
         await this.setKey(accountId, keyPair)
         this.accounts[accountId] = true
     }
