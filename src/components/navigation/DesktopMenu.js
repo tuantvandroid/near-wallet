@@ -41,7 +41,6 @@ const Menu = styled.div`
 `
 
 const DesktopMenu = ({ show, accountId, accounts, selectAccount, accountsBalance, balance, refreshBalance }) => {
-
     if (show) {
         return (
             <Menu id='desktop-menu'>
@@ -62,4 +61,4 @@ const DesktopMenu = ({ show, accountId, accounts, selectAccount, accountsBalance
     return null;
 }
 
-export default DesktopMenu;
+export default DesktopMenu
