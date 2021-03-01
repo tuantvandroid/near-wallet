@@ -57,7 +57,6 @@ const Account = styled.div`
         :last-of-type {
             border-bottom: 0;
         }
-        z-index: 2000;
 
         .refresh {
             position: absolute;
@@ -65,14 +64,8 @@ const Account = styled.div`
             height: 100%;
             top: 0px;
             right: 0px;
-
-            z-index: 3000;
-            background: red;
-
-            > span {
-                position: relative;
-                top: 36px;
-            }
+            background: url(${IconRefresh}) no-repeat center 34px;
+            background-size: 20px auto;
         }
     }
 `
