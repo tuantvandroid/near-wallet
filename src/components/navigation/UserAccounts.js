@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Balance from '../common/Balance'
 
+import IconRefresh from '../../images/icon-nodes.svg'
+
 const Wrapper = styled.div`
     @media (min-width: 992px) {
         max-height: 228px;
@@ -95,9 +97,7 @@ const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, bal
                 </div>
                 <div>
                     {accountsBalance && accountsBalance[account]?.available && (
-                        <div className='refresh' onClick={() => refreshBalance(account)}>
-                            <span>refresh</span>
-                        </div>
+                        <span className='refresh' onClick={() => refreshBalance(account)} title='Refresh balance' />
                     )}
                 </div>
             </Account>
