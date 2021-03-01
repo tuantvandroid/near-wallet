@@ -1,3 +1,5 @@
+import React from 'react'
+import styled from 'styled-components'
 import Balance from '../common/Balance'
 
 const Wrapper = styled.div`
@@ -103,4 +105,4 @@ const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, bal
     </Wrapper>
 )
 
-export default UserAccounts;
+export default UserAccounts
