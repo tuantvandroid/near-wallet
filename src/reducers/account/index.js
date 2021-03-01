@@ -15,7 +15,8 @@ import {
     updateStakingAccount,
     updateStakingLockup,
     getBalance,
-    selectAccount
+    selectAccount,
+    getAccountBalance
 } from '../../actions/account'
 
 import { 
@@ -29,7 +30,8 @@ const initialState = {
     actionsPending: [],
     canEnableTwoFactor: null,
     twoFactor: null,
-    ledgerKey: null
+    ledgerKey: null,
+    accountsBalance: undefined
 }
 
 const recoverCodeReducer = handleActions({
@@ -153,7 +155,24 @@ const account = handleActions({
             }),
     [selectAccount]: () => {
         return initialState
-    }
+    },
+    [getAccountBalance]: (state, { error, payload, ready, meta }) => 
+        (!ready || error)
+            ? {
+                ...state,
+                // accountsBalance: state.accountsBalance || {}
+                accountsBalance: {
+                    ...state.accountsBalance,
+                    [meta.accountId]: undefined
+                }
+            }
+            : ({
+                ...state,
+                accountsBalance: {
+                    ...state.accountsBalance,
+                    [meta.accountId]: payload
+                }
+            }),
 }, initialState)
 
 export default reduceReducers(
