@@ -53,8 +53,15 @@ const UserAccounts = ({ accounts, accountId, selectAccount }) => (
             </div>
         </Account>
         {accounts.filter(a => a !== accountId).map((account, i) => (
-            <Account key={`link-${i}`} onClick={() => selectAccount(account)} className='additional-account'>
-                {account}
+            <Account key={`link-${i}`} className='additional-account'>
+                <div onClick={() => selectAccount(account)}>
+                    <div>
+                        {account}
+                    </div>
+                    <div className='balance'>
+                        <Balance amount={accountsBalance && accountsBalance[account]?.available} />
+                    </div>
+                </div>
             </Account>
         ))}
     </Wrapper>
