@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import Balance from '../common/Balance'
 
 const Wrapper = styled.div`
     @media (min-width: 992px) {
@@ -49,6 +48,9 @@ const UserAccounts = ({ accounts, accountId, selectAccount }) => (
     <Wrapper>
         <Account>
             {accountId}
+            <div className='balance'>
+                <Balance amount={balance?.available} />
+            </div>
         </Account>
         {accounts.filter(a => a !== accountId).map((account, i) => (
             <Account key={`link-${i}`} onClick={() => selectAccount(account)} className='additional-account'>

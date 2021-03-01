@@ -40,7 +40,7 @@ const Menu = styled.div`
     }
 `
 
-const DesktopMenu = ({ show, accountId, accounts, selectAccount }) => {
+const DesktopMenu = ({ show, accountId, accounts, selectAccount, accountsBalance, balance, refreshBalance }) => {
 
     if (show) {
         return (
@@ -50,6 +50,8 @@ const DesktopMenu = ({ show, accountId, accounts, selectAccount }) => {
                     accounts={accounts}
                     accountId={accountId}
                     selectAccount={selectAccount}
+                    accountsBalance={accountsBalance}
+                    balance={balance}
                 />
                 <AccessAccountBtn/>
                 <CreateAccountBtn/>
