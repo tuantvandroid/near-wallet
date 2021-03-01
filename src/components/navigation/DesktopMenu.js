@@ -52,6 +52,7 @@ const DesktopMenu = ({ show, accountId, accounts, selectAccount, accountsBalance
                     selectAccount={selectAccount}
                     accountsBalance={accountsBalance}
                     balance={balance}
+                    refreshBalance={refreshBalance}
                 />
                 <AccessAccountBtn/>
                 <CreateAccountBtn/>

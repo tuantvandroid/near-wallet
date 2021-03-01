@@ -44,7 +44,7 @@ const Account = styled.div`
     }
 `
 
-const UserAccounts = ({ accounts, accountId, selectAccount }) => (
+const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, balance, refreshBalance }) => (
     <Wrapper>
         <Account>
             {accountId}
@@ -61,6 +61,13 @@ const UserAccounts = ({ accounts, accountId, selectAccount }) => (
                     <div className='balance'>
                         <Balance amount={accountsBalance && accountsBalance[account]?.available} />
                     </div>
+                </div>
+                <div>
+                    {accountsBalance && accountsBalance[account]?.available && (
+                        <div className='refresh' onClick={() => refreshBalance(account)}>
+                            <span>refresh</span>
+                        </div>
+                    )}
                 </div>
             </Account>
         ))}
