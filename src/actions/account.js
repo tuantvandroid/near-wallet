@@ -574,6 +574,11 @@ export const { selectAccount, refreshAccountOwner, refreshAccountExternal, refre
     GET_BALANCE: wallet.getBalance.bind(wallet),
     GET_ACCOUNT_BALANCE: [
         wallet.getBalance.bind(wallet),
-        (accountId) => ({ accountId })
+        (accountId) => ({ 
+            accountId,
+            alert: {
+                ignoreMainLoader: true
+            }
+        })
     ]
 })
