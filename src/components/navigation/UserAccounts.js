@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Balance from '../common/Balance'
 import classNames from '../../utils/classNames'
+import { Translate } from 'react-localize-redux'
 
 const Wrapper = styled.div`
     @media (min-width: 992px) {
@@ -135,7 +136,7 @@ const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, bal
                 <div>
                     <SyncButton className={classNames([{'dots': !(accountsBalance && accountsBalance[account]?.available)}])} onClick={() => refreshBalance(account)} title='Sync balance'>
                         {accountsBalance && accountsBalance[account]?.available
-                            ? 'Sync'
+                            ? <Translate id='sync'/>
                             : ''
                         }
                         
