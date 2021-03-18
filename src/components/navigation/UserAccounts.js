@@ -130,7 +130,11 @@ const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, bal
                         {account}
                     </div>
                     <div className='balance'>
-                        <Balance amount={accountsBalance && accountsBalance[account]?.available} />
+                        {accountsBalance 
+                            && (accountsBalance[account]?.loading || accountsBalance[account]?.available)
+                                ? <Balance amount={accountsBalance[account]?.available} />
+                                : <div className='symbol'>Ⓝ</div>
+                        }
                     </div>
                 </div>
                 <div>
