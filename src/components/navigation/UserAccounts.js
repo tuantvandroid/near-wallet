@@ -139,13 +139,13 @@ const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, bal
                 </div>
                 <div>
                     <SyncButton 
-                        className={classNames([{'dots': !(accountsBalance && accountsBalance[account]?.available)}])} 
+                        className={classNames([{'dots': !(accountsBalance && !accountsBalance[account]?.loading)}])} 
                         onClick={() => refreshBalance(account)} 
                         title='Sync balance'
                     >
-                        {accountsBalance 
-                            && accountsBalance[account]?.available
-                            && <Translate id='sync'/>
+                        {accountsBalance && accountsBalance[account]?.loading
+                            ? ''
+                            : <Translate id='sync'/>
                         }
                     </SyncButton>
                 </div>
