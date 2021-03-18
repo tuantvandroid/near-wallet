@@ -150,9 +150,9 @@ const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, bal
                         onClick={() => refreshBalance(account)} 
                         title='Sync balance'
                     >
-                        {accountsBalance && accountsBalance[account]?.loading
-                            ? ''
-                            : <Translate id='sync'/>
+                        {accountsBalance 
+                            && !accountsBalance[account]?.loading 
+                            && <Translate id='sync'/>
                         }
                     </SyncButton>
                 </div>
