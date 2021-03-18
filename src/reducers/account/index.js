@@ -16,7 +16,8 @@ import {
     updateStakingLockup,
     getBalance,
     selectAccount,
-    getAccountBalance
+    getAccountBalance,
+    setAccountBalance
 } from '../../actions/account'
 
 import { 
@@ -172,6 +173,15 @@ const account = handleActions({
                     [meta.accountId]: payload
                 }
             },
+    [setAccountBalance]: (state, { payload }) => ({
+        ...state,
+        accountsBalance: {
+            ...state.accountsBalance,
+            [payload]: {
+                loading: true
+            }
+        }
+    })
 }, initialState)
 
 export default reduceReducers(
