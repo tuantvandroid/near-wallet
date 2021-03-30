@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Balance from '../common/Balance'
 import classNames from '../../utils/classNames'
 import { Translate } from 'react-localize-redux'
+import { actionsPending } from '../../utils/alerts'
 
 const Wrapper = styled.div`
     @media (min-width: 992px) {
@@ -120,17 +121,28 @@ const SyncButton = styled.span`
     }
 `
 
-const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, balance, refreshBalance }) => (
+const UserAccounts = ({ accounts, accountId, selectAccount, accountsBalance, balance, refreshBalance, getBalance }) => (
     <Wrapper>
-        <Account className='active-account'>
-          <div className="account-data">
-            {accountId}
-            <div className='balance'>
-                <Balance amount={balance?.available} />
-            </div>
-          </div>
-        </Account>
+        <UserAccount
+            accountId={accountId}
+            balance={actionsPending('GET_BALANCE') ? '' : balance?.available}
+            balanceLoading={actionsPending('GET_BALANCE')}
+            refreshBalance={() => (getBalance(), refreshBalance(accountId))}
+            active={true}
+        />
         {accounts.filter(a => a !== accountId).map((account, i) => (
+            <UserAccount
+                key={i}
+                accountId={account}
+                balance={accountsBalance && accountsBalance[account]?.available}
+                balanceLoading={accountsBalance && accountsBalance[account]?.loading}
+                refreshBalance={() => refreshBalance(account)}
+                active={false}
+                onClick={() => selectAccount(account)}
+            />
+        ))}
+    </Wrapper>
+)
 
 const UserAccount = ({ accountId, balance, balanceLoading, refreshBalance, active, onClick }) => (
     <Account className={active ? 'active-account' : 'additional-account'}>
