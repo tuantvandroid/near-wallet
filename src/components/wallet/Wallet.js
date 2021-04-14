@@ -132,6 +132,12 @@ export function Wallet() {
         dispatch(getTransactions(accountId))
     }, [])
 
+    useEffect(() => {
+        if(!balance.total) {
+            Mixpanel.track('wallet balance loading')
+        }
+    }, [balance])
+
     const logError = (error) => {
         console.warn(error);
         Sentry.captureException()
