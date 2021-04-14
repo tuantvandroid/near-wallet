@@ -43,7 +43,7 @@ const Account = styled.div`
             background-color: #f8f8f8;
 
             .accountId {
-            color: black;
+                color: black;
             }
         }
     }
@@ -56,12 +56,13 @@ const Account = styled.div`
         color: black;
 
         .balance {
-        color: #008D6A;
+            color: #008D6A;
         }
     }
 
     .account-data {
         display: flex;
+        flex: 1;
         flex-direction: column;
     }
 
