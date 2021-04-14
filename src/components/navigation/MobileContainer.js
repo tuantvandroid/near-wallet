@@ -172,7 +172,8 @@ class MobileContainer extends Component {
             toggleMenu,
             showNavLinks,
             flowLimitation,
-            refreshBalance
+            refreshBalance,
+            getBalance
         } = this.props
 
         return (
@@ -211,6 +212,7 @@ class MobileContainer extends Component {
                                 accountsBalance={account.accountsBalance}
                                 balance={account.balance}
                                 refreshBalance={refreshBalance}
+                                getBalance={getBalance}
                             />
                             <AccessAccountBtn/>
                             <CreateAccountBtn/>
