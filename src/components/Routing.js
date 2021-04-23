@@ -208,6 +208,7 @@ class Routing extends Component {
                                 exact
                                 path='/' 
                                 component={Wallet}
+                                accountFound={this.props.account.localStorage?.accountFound}
                             />
                             <Route
                                 exact
