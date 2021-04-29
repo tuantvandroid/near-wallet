@@ -124,12 +124,14 @@ export function Wallet() {
     const transactions = useSelector(({ transactions }) => transactions)
     const dispatch = useDispatch()
     const hideExploreApps = localStorage.getItem('hideExploreApps')
-    
+
     useEffect(() => {
-        let id = Mixpanel.get_distinct_id()
-        Mixpanel.identify(id)
-        Mixpanel.people.set({relogin_date: new Date().toString()})
-        dispatch(getTransactions(accountId))
+        if (accountId) {
+            let id = Mixpanel.get_distinct_id()
+            Mixpanel.identify(id)
+            Mixpanel.people.set({relogin_date: new Date().toString()})
+            dispatch(getTransactions(accountId))
+        }
     }, [accountId])
 
     const logError = (error) => {
